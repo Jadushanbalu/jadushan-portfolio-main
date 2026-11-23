@@ -31,7 +31,7 @@ const REELS = [
 
 // Cinematic videos (16:9)
 const FILMS = [
-   { title:"Flim 1", thumb:"assets/flim/1.1.jpg", video:"assets/flim/1.1.mp4" }// { title:"Film title", thumb:"assets/films/f1.jpg", video:"assets/films/f1.mp4", link:"https://…" },
+   { title:"Film 1", thumb:"assets/film/1.1.jpg", video:"assets/film/1.1.mp4" }// { title:"Film title", thumb:"assets/films/f1.jpg", video:"assets/films/f1.mp4", link:"https://…" },
 ];
 
 // Photography & graphic design. tag: "Photography" or "Graphic Design" (any text works)

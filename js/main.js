@@ -178,20 +178,44 @@ if (finePointer && !reduce) {
   document.addEventListener("mouseover", e => gsap.to(c, { scale: e.target.closest("a,button,.play,input,select,textarea") ? 3 : 1, duration: .25 }));
 }
 
-/* ----- Contact form: validate, then open a draft (no backend needed) ----- */
+/* ----- Contact form: emails you via Web3Forms, or opens WhatsApp / copies ----- */
+const WEB3FORMS_KEY = "2e1bf0de-a912-4d94-9860-1d542441c3bc";
 const form = $("#inquiry");
 let mode = "mail";
 $$("button[type=submit]", form).forEach(b => b.addEventListener("click", () => mode = b.dataset.mode));
+
 form.addEventListener("submit", async e => {
   e.preventDefault();
   const d = Object.fromEntries(new FormData(form)), err = $(".err", form);
-  if (!d.name.trim() || !/^\S+@\S+\.\S+$/.test(d.email) || d.message.trim().length < 5) { err.textContent = "Enter your name, a valid email and a message of at least 5 characters."; return; }
+  err.style.color = "";
+  if (!d.name.trim() || !/^\S+@\S+\.\S+$/.test(d.email) || d.message.trim().length < 5) {
+    err.textContent = "Enter your name, a valid email and a message of at least 5 characters."; return;
+  }
   err.textContent = "";
   const subject = `${d.track} inquiry from ${d.name}`;
   const text = `Hi Jadushan,\n\n${d.message}\n\nTrack: ${d.track}\nName: ${d.name}\nEmail: ${d.email}`;
-  if (mode === "mail") location.href = `mailto:jadushbalu11@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
-  else if (mode === "wa") open(`https://wa.me/94714598220?text=${encodeURIComponent(text)}`, "_blank", "noopener");
-  else { try { await navigator.clipboard.writeText(text); err.style.color = "#C7FF62"; err.textContent = "Message copied."; } catch { err.textContent = "Copy failed. Select the text and copy it manually."; } }
+
+  if (mode === "mail") {
+    err.textContent = "Sending…";
+    try {
+      const r = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ access_key: WEB3FORMS_KEY, subject, name: d.name, email: d.email, track: d.track, message: d.message })
+      });
+      const j = await r.json();
+      if (!j.success) throw new Error(j.message);
+      err.style.color = "#C7FF62"; err.textContent = "Message sent. I will reply to your email soon.";
+      form.reset();
+    } catch {
+      err.textContent = "Could not send. Please use WhatsApp or email directly.";
+    }
+  } else if (mode === "wa") {
+    open(`https://wa.me/94714598220?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+  } else {
+    try { await navigator.clipboard.writeText(text); err.style.color = "#C7FF62"; err.textContent = "Message copied."; }
+    catch { err.textContent = "Copy failed. Select the text and copy it manually."; }
+  }
 });
 
 /* ----- Boot ----- */

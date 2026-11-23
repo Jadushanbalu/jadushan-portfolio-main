@@ -32,6 +32,7 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opa
 @keyframes pulse{50%{opacity:.5;transform:scale(1.08)}}
 .photo{position:relative;width:100%;height:100%;border-radius:200px 200px 24px 24px;overflow:hidden;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center}
 .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo img + .initials{display:none}
 .initials{font:800 4rem var(--display);color:var(--lime)}
 .title{font:800 clamp(2.8rem,11vw,9rem)/.88 var(--display);letter-spacing:-.04em}
 .line{display:block;overflow:hidden;padding-bottom:.05em}.line span{display:inline-block}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jadushan Balu — Fullstack Developer & Editor</title>
+<meta name="description" content="Portfolio of Jadushan Balu: mobile apps, websites, video editing, photography and graphic design.">
+<meta name="theme-color" content="#080A0C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="cursor" aria-hidden="true"></div>
+
+<header class="nav">
+  <button class="logo" data-go="home" aria-label="Home">JB</button>
+  <nav aria-label="Primary">
+    <button data-go="home" class="mag">Home</button>
+    <button data-go="dev" class="mag">Development</button>
+    <button data-go="edit" class="mag">Editing</button>
+    <button data-go="contact" class="mag">Contact</button>
+  </nav>
+</header>
+
+<main id="main">
+<!-- ============ HOME ============ -->
+<section class="view" id="view-home" data-view="home">
+  <div class="hero">
+    <div class="photo-wrap">
+      <div class="glow"></div>
+      <div class="photo"><img src="assets/profile.jpg" alt="Portrait of Jadushan Balu" onerror="this.remove()"><span class="initials">JB</span></div>
+    </div>
+    <h1 class="title"><span class="line"><span>JADUSHAN</span></span><span class="line"><span>BALU</span></span></h1>
+    <p class="badge">FULLSTACK DEVELOPER &amp; EDITOR</p>
+    <div class="portals">
+      <button class="portal mag" data-go="dev"><b>01 / DEVELOPMENT</b><em>Mobile Applications &amp; Web Engineering</em><i data-lucide="arrow-up-right"></i></button>
+      <button class="portal mag" data-go="edit"><b>02 / EDITING</b><em>Videography, Video Editing, Photography &amp; Graphic Design</em><i data-lucide="arrow-up-right"></i></button>
+    </div>
+  </div>
+
+  <section class="contact" id="contact">
+    <h2 class="big">LET’S CREATE SOMETHING MEMORABLE.</h2>
+    <div class="contact-grid">
+      <div class="cards">
+        <a class="card mag" href="tel:0770650984"><i data-lucide="phone"></i><span>Phone</span><b>077 065 0984</b></a>
+        <a class="card mag" href="https://wa.me/94714598220" target="_blank" rel="noopener"><i data-lucide="message-circle"></i><span>WhatsApp</span><b>+94 71 459 8220</b></a>
+        <a class="card mag" href="mailto:jadushbalu11@gmail.com"><i data-lucide="mail"></i><span>Email</span><b>jadushbalu11@gmail.com</b></a>
+        <div class="card"><i data-lucide="instagram"></i><span>Instagram</span><b>Jadushan Balu</b></div>
+      </div>
+      <form id="inquiry" novalidate>
+        <label>Name<input name="name" autocomplete="name" required></label>
+        <label>Email<input name="email" type="email" autocomplete="email" required></label>
+        <label>Track<select name="track"><option>Development</option><option>Editing</option></select></label>
+        <label>Message<textarea name="message" rows="4" required></textarea></label>
+        <p class="err" role="alert" aria-live="polite"></p>
+        <div class="row">
+          <button type="submit" data-mode="mail" class="btn mag">Open email draft</button>
+          <button type="submit" data-mode="wa" class="btn ghost mag">Open WhatsApp draft</button>
+          <button type="submit" data-mode="copy" class="btn ghost mag">Copy message</button>
+        </div>
+      </form>
+    </div>
+    <footer>© <span id="yr"></span> Jadushan Balu</footer>
+  </section>
+</section>
+
+<!-- ============ DEVELOPMENT ============ -->
+<section class="view" id="view-dev" data-view="dev" hidden>
+  <div class="topbar"><button data-go="home" class="pill"><i data-lucide="arrow-left"></i>Home</button><button data-go="edit" class="pill">Editing<i data-lucide="arrow-right"></i></button></div>
+  <h2 class="big">Development<br>Workspace</h2>
+  <div class="tabs" role="tablist" aria-label="Development categories">
+    <button role="tab" aria-selected="true" data-tab="apps">Mobile Application</button>
+    <button role="tab" aria-selected="false" data-tab="sites">Websites</button>
+  </div>
+  <div class="panel" id="panel-apps" role="tabpanel"><div class="grid phones" id="apps"></div></div>
+  <div class="panel" id="panel-sites" role="tabpanel" hidden><div class="grid browsers" id="sites"></div></div>
+</section>
+
+<!-- ============ EDITING ============ -->
+<section class="view" id="view-edit" data-view="edit" hidden>
+  <div class="topbar"><button data-go="home" class="pill"><i data-lucide="arrow-left"></i>Home</button><button data-go="dev" class="pill">Development<i data-lucide="arrow-right"></i></button></div>
+  <h2 class="big">Editing<br>Studio</h2>
+  <div class="tabs" role="tablist" aria-label="Editing categories">
+    <button role="tab" aria-selected="true" data-tab="video">Videography and Video Editing</button>
+    <button role="tab" aria-selected="false" data-tab="photo">Photography and Graphic Designing</button>
+  </div>
+  <div class="panel" id="panel-video" role="tabpanel">
+    <h3 class="sub">Reels · 9:16</h3><div class="grid reels" id="reels"></div>
+    <h3 class="sub">Cinematic · 16:9</h3><div class="grid films" id="films"></div>
+  </div>
+  <div class="panel" id="panel-photo" role="tabpanel" hidden><div class="masonry" id="photos"></div></div>
+</section>
+</main>
+
+<!-- Transition overlay -->
+<div class="fx" id="fx" aria-hidden="true">
+  <svg class="obj laptop" viewBox="0 0 400 300">
+    <rect x="60" y="20" width="280" height="190" rx="14" fill="#15191E" stroke="#C7FF62" stroke-width="3"/>
+    <rect class="screen" x="74" y="34" width="252" height="162" rx="6" fill="#080A0C"/>
+    <g stroke="#C7FF62" stroke-width="3" fill="none" stroke-linecap="round"><path d="M110 85l-22 20 22 20"/><path d="M290 85l22 20-22 20"/><path d="M215 78l-30 54" stroke="#fff"/></g>
+    <path d="M30 222h340l-20 30H50z" fill="#15191E" stroke="#8E96A0" stroke-width="2"/>
+  </svg>
+  <svg class="obj lens" viewBox="0 0 300 300">
+    <circle cx="150" cy="150" r="140" fill="#15191E" stroke="#8E96A0" stroke-width="3"/>
+    <circle cx="150" cy="150" r="108" fill="#080A0C" stroke="#C7FF62" stroke-width="3"/>
+    <g class="blades" stroke="#C7FF62" stroke-width="2" fill="rgba(199,255,98,.08)"><path d="M150 52L196 132L104 132Z" transform="rotate(0 150 150)"/><path d="M150 52L196 132L104 132Z" transform="rotate(60 150 150)"/><path d="M150 52L196 132L104 132Z" transform="rotate(120 150 150)"/><path d="M150 52L196 132L104 132Z" transform="rotate(180 150 150)"/><path d="M150 52L196 132L104 132Z" transform="rotate(240 150 150)"/><path d="M150 52L196 132L104 132Z" transform="rotate(300 150 150)"/></g>
+    <circle cx="150" cy="150" r="22" fill="#C7FF62"/>
+  </svg>
+</div>
+
+<!-- Lightbox -->
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-label="Preview">
+  <button class="x" id="mx" aria-label="Close"><i data-lucide="x"></i></button>
+  <div class="mbody" id="mbody"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lucide@0.441.0/dist/umd/lucide.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

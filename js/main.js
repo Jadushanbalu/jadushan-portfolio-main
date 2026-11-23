@@ -21,7 +21,12 @@ const SITES = [
 
 // Reels (9:16). Give a local mp4 in "video" and/or an Instagram "link".
 const REELS = [
-  // { title:"Reel title", thumb:"assets/reels/r1.jpg", video:"assets/reels/r1.mp4", link:"https://instagram.com/reel/…" },
+  { title:"Reel 1", thumb:"assets/reels/r1.jpg", video:"assets/reels/r1.mp4" },
+  { title:"Reel 2", thumb:"assets/reels/r2.jpg", video:"assets/reels/r2.mp4" },
+  { title:"Reel 3", thumb:"assets/reels/r3.jpg", video:"assets/reels/r3.mp4" },
+  { title:"Reel 4", thumb:"assets/reels/r4.jpg", video:"assets/reels/r4.mp4" },
+  { title:"Reel 5", thumb:"assets/reels/r5.jpg", video:"assets/reels/r5.mp4" },
+  { title:"Reel 6", thumb:"assets/reels/r6.jpg", video:"assets/reels/r6.mp4" },
 ];
 
 // Cinematic videos (16:9)

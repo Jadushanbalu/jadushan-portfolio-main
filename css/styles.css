@@ -120,3 +120,13 @@ footer{margin-top:5rem;color:var(--slate);font-size:.8rem}
 .cursor{position:fixed;top:0;left:0;width:14px;height:14px;border-radius:50%;background:var(--lime);mix-blend-mode:difference;pointer-events:none;z-index:200;display:none;transform:translate(-50%,-50%)}
 @media(hover:hover) and (pointer:fine){.cursor{display:block}body.cursor-on,body.cursor-on *{cursor:none!important}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.cursor{display:none}}
+
+/* ===== Hero v2: photo blends into the dark page ===== */
+.hero{gap:0;padding-top:5.5rem}
+.badge{order:1;margin-bottom:1rem}
+.title{order:2;position:relative;z-index:2;font-size:clamp(2.6rem,9vw,7.5rem);line-height:.9}
+.photo-wrap{order:3;width:min(560px,92vw);aspect-ratio:4/5;margin-top:clamp(-6rem,-9vw,-2rem)}
+.glow{inset:5% 10% 35%;background:radial-gradient(ellipse at 50% 45%,rgba(199,255,98,.35),transparent 65%)}
+.photo{border:0;border-radius:0;background:none;-webkit-mask-image:linear-gradient(#000 60%,transparent);mask-image:linear-gradient(#000 60%,transparent)}
+.photo img{object-position:50% 0;filter:grayscale(1) contrast(1.05)}
+.portals{order:4;margin-top:-5rem;position:relative;z-index:2}

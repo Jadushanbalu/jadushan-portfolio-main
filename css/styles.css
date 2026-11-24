@@ -131,3 +131,8 @@ footer{margin-top:5rem;color:var(--slate);font-size:.8rem}
 .photo{border:0;border-radius:0;background:none;-webkit-mask-image:linear-gradient(#000 60%,transparent);mask-image:linear-gradient(#000 60%,transparent)}
 .photo img{object-position:50% 0;filter:grayscale(1) contrast(1.05)}
 .portals{order:4;margin-top:-5rem;position:relative;z-index:2}
+
+/* ===== Gallery fix: reserve height so images show properly ===== */
+.masonry .play .media{display:block;aspect-ratio:4/5;min-height:0;background:#0d1014}
+.masonry .play .media img{position:static;display:block;width:100%;height:auto;object-fit:cover}
+.masonry .ph .media{aspect-ratio:auto;min-height:var(--h,240px)}

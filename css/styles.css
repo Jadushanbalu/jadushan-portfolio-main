@@ -137,3 +137,12 @@ footer{margin-top:5rem;color:var(--slate);font-size:.8rem}
 .masonry .play,.masonry .ph{margin:0;aspect-ratio:4/5}
 .masonry .play .media{position:absolute;inset:0;aspect-ratio:auto;min-height:0;background:#0d1014}
 .masonry .play .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* ===== Editing stats ===== */
+.stats-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:2rem}
+.stats-head .big{margin:0}
+.stats{display:flex;gap:1rem;flex-wrap:wrap}
+.stat{min-width:150px;padding:1.1rem 1.4rem;background:rgba(21,25,30,.7);border:1px solid var(--line);border-radius:var(--r);backdrop-filter:blur(12px)}
+.stat b{display:block;font:800 clamp(1.8rem,4vw,2.8rem)/1 var(--display);color:var(--lime)}
+.stat span{color:var(--slate);font-size:.85rem}
+@media(max-width:700px){.stats{width:100%}.stat{flex:1;min-width:0;padding:.9rem 1rem}}

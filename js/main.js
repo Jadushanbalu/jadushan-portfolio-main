@@ -1,25 +1,20 @@
 /* =====================================================================
    JADUSHAN BALU — PORTFOLIO
    1) YOUR CONTENT (edit the arrays below)   2) Engine (no need to touch)
-   Empty arrays show dashed "ready-to-fill" slots. Paths are relative,
-   e.g. "assets/apps/shop.jpg".
    ===================================================================== */
 
 /* ---------- 1. YOUR CONTENT ---------- */
 
-// Mobile apps (9:16). Copy the example object, remove the leading "//".
 const APPS = [
   // { title:"App name", overview:"What it does.", thumb:"assets/apps/app1.jpg",
   //   stack:["Flutter","Firebase"], live:"https://…", repo:"https://github.com/…" },
 ];
 
-// Websites (16:9)
 const SITES = [
   // { title:"Site name", overview:"What it does.", thumb:"assets/sites/site1.jpg",
   //   stack:["HTML","CSS","JS"], live:"https://…", repo:"https://github.com/…" },
 ];
 
-// Reels (9:16). Give a local mp4 in "video" and/or an Instagram "link".
 const REELS = [
   { title:"Reel 1", thumb:"assets/reels/r1.jpg", video:"assets/reels/r1.mp4" },
   { title:"Reel 2", thumb:"assets/reels/r2.jpg", video:"assets/reels/r2.mp4" },
@@ -29,12 +24,10 @@ const REELS = [
   { title:"Reel 6", thumb:"assets/reels/r6.jpg", video:"assets/reels/r6.mp4" },
 ];
 
-// Cinematic videos (16:9)
 const FILMS = [
   { title:"Film 1", thumb:"assets/film/1.1.png", video:"assets/film/1.1.mp4" },
 ];
 
-// Photography & graphic design. tag: "Photography" or "Graphic Design" (any text works)
 const PHOTOS = [
   { title:"Dinemore · Crispy Chicken Burger", src:"assets/photos/p1.jpg", tag:"Graphic Design" },
   { title:"Blendz · This or That",            src:"assets/photos/p2.jpg", tag:"Graphic Design" },
@@ -117,26 +110,31 @@ $$(".tabs").forEach(t => t.addEventListener("click", e => {
 const fx = $("#fx");
 let cur = "home", busy = false;
 
-function enter(v) {
-  const el = $(`[data-view=${v}]`);
-   countUp(el);
-  $$("nav button").forEach(b => b.classList.toggle("on", b.dataset.go === v));
-  icons();
-  if (!reduce) {
-    if (v === "home") heroIntro();
-    else gsap.from(el.querySelectorAll(".topbar,.big,.tabs,.panel:not([hidden]) > *"), { y: 40, opacity: 0, duration: .6, stagger: .07, ease: "power3.out" });
-    // Staggered card reveal on scroll
-    ScrollTrigger.batch(el.querySelectorAll(".item,.play,.card"), { once: true, start: "top 92%",
-      onEnter: b => gsap.fromTo(b, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: .6, stagger: .08, ease: "power3.out", overwrite: true }) });
-  }
-  ScrollTrigger.refresh();
-}
 function countUp(root) {
   $$("[data-count]", root).forEach(n => {
     const end = +n.dataset.count, o = { v: 0 };
     if (reduce) { n.textContent = end + "+"; return; }
     gsap.to(o, { v: end, duration: 1.6, delay: .5, ease: "power2.out", onUpdate: () => n.textContent = Math.round(o.v) + "+" });
   });
+}
+
+function enter(v) {
+  const el = $(`[data-view=${v}]`);
+  el.hidden = false; scrollTo(0, 0);          // <-- this line shows the page (it was missing)
+  countUp(el);
+  $$("nav button").forEach(b => b.classList.toggle("on", b.dataset.go === v));
+  icons();
+  if (!reduce) {
+    if (v === "home") heroIntro();
+    else gsap.from(el.querySelectorAll(".topbar,.big,.tabs,.panel:not([hidden]) > *"), { y: 40, opacity: 0, duration: .6, stagger: .07, ease: "power3.out" });
+    ScrollTrigger.batch(el.querySelectorAll(".item,.play,.card"), { once: true, start: "top 92%",
+      onEnter: b => gsap.fromTo(b, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: .6, stagger: .08, ease: "power3.out", overwrite: true }) });
+  }
+  ScrollTrigger.refresh();
+}
+function swap(v) {
+  $(`[data-view=${cur}]`).hidden = true; ScrollTrigger.getAll().forEach(s => s.kill());
+  cur = v; enter(v);
 }
 function go(v) {
   if (busy) return;
@@ -148,7 +146,7 @@ function go(v) {
   if (reduce) { swap(v); after(); return; }
   busy = true;
   const done = () => { busy = false; };
-  if (!kind) { // quick fade for Home / Dev <-> Edit-free paths
+  if (!kind) {
     gsap.timeline({ onComplete: done }).to("main", { opacity: 0, duration: .2 }).add(() => { swap(v); after(); }).to("main", { opacity: 1, duration: .3 });
     return;
   }
@@ -158,9 +156,9 @@ function go(v) {
   tl.fromTo(fx, { opacity: 0 }, { opacity: 1, duration: .15 })
     .fromTo(obj, { scale: .45, y: 60, rotate: kind === "lens" ? -25 : 0, opacity: 0 }, { scale: 1, y: 0, rotate: 0, opacity: 1, duration: .38, ease: "back.out(1.6)" }, 0);
   if (kind === "lens") tl.to($(".blades", fx), { rotate: 60, duration: .3, ease: "power2.inOut" }, .2);
-  tl.to(obj, { scale: kind === "lens" ? 16 : 14, duration: .45, ease: "power3.in" }, .45)   // zoom through screen / viewfinder
+  tl.to(obj, { scale: kind === "lens" ? 16 : 14, duration: .45, ease: "power3.in" }, .45)
     .add(() => swap(v), .85)
-    .to(fx, { opacity: 0, duration: .22 }, .9);                                           // total ≈ 1.1s
+    .to(fx, { opacity: 0, duration: .22 }, .9);
 }
 
 function heroIntro() {
@@ -175,7 +173,7 @@ function heroIntro() {
 
 document.addEventListener("click", e => { const b = e.target.closest("[data-go]"); if (b) go(b.dataset.go); });
 
-/* ----- Magnetic buttons, portal spotlight, photo parallax, cursor ----- */
+/* ----- Magnetic buttons, portal spotlight, photo parallax, cursor (mouse only) ----- */
 if (finePointer && !reduce) {
   document.addEventListener("mousemove", e => {
     const m = e.target.closest?.(".mag");
@@ -193,6 +191,7 @@ if (finePointer && !reduce) {
 
 /* ----- Contact form: emails you via Web3Forms, or opens WhatsApp / copies ----- */
 const WEB3FORMS_KEY = "2e1bf0de-a912-4d94-9860-1d542441c3bc";
+const WHATSAPP_NUMBER = "94714597005";
 const form = $("#inquiry");
 let mode = "mail";
 $$("button[type=submit]", form).forEach(b => b.addEventListener("click", () => mode = b.dataset.mode));
@@ -224,7 +223,7 @@ form.addEventListener("submit", async e => {
       err.textContent = "Could not send. Please use WhatsApp or email directly.";
     }
   } else if (mode === "wa") {
-    open(`https://wa.me/94714598220?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+    open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
   } else {
     try { await navigator.clipboard.writeText(text); err.style.color = "#C7FF62"; err.textContent = "Message copied."; }
     catch { err.textContent = "Copy failed. Select the text and copy it manually."; }

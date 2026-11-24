@@ -12,10 +12,34 @@ const APPS = [
     stack:["React Native","Redux","Node.js","Firebase","Gemini API","ChromaDB"] },
 ];
 
+
 const SITES = [
-  // { title:"Site name", overview:"What it does.", thumb:"assets/sites/site1.jpg",
-  //   stack:["HTML","CSS","JS"], live:"https://…", repo:"https://github.com/…" },
+  {
+    title: "Perfume Store Website",
+    overview: "A premium e-commerce website for a luxury fragrance brand, featuring product collections, scent profiles, and a clean shopping experience.",
+    thumb: "assets/sites/perfume-store.png",
+    stack: ["PHP", "JavaScript", "HTML5", "CSS3"]
+  },
+  {
+    title: "Sri Aqua Minerals Water",
+    overview: "An official brand website showcasing Sri Aqua's drinking water products, quality standards, and commitment to pure and refreshing hydration.",
+    thumb: "assets/sites/sri-aqua.png",
+    stack: ["HTML5", "CSS3", "JavaScript", "React.js", "Bootstrap"]
+  },
+  {
+    title: "Sri Ambal's Rooms",
+    overview: "An accommodation website featuring room details, facilities, pricing, photo galleries, and contact information for bookings.",
+    thumb: "assets/sites/sri-ambal-rooms.png",
+    stack: ["HTML5", "CSS3", "JavaScript", "React.js", "Bootstrap"]
+  },
+  {
+    title: "Sri Ambal Jewellers & Fashions",
+    overview: "An official business website showcasing jewellery, fashion accessories, and fancy items with product browsing and easy inquiries.",
+    thumb: "assets/sites/sri-ambal-jewellers.png",
+    stack: ["HTML5", "CSS3", "JavaScript", "React.js", "Bootstrap"]
+  }
 ];
+
 
 const REELS = [
   { title:"Reel 1", thumb:"assets/reels/r1.jpg", video:"assets/reels/r1.mp4" },

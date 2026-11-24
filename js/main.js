@@ -36,11 +36,11 @@ const FILMS = [
 
 // Photography & graphic design. tag: "Photography" or "Graphic Design" (any text works)
 const PHOTOS = [
-  { title:"Dinemore · Crispy Chicken Burger", src:"assets/photos/p5.jpg", tag:"Graphic Design" },
-  { title:"Blendz · This or That",            src:"assets/photos/p4.jpg", tag:"Graphic Design" },
-  { title:"Bamba · Find Us",                  src:"assets/photos/p1.jpg", tag:"Graphic Design" },
-  { title:"Bamba · Taste & Go",               src:"assets/photos/p2.jpg", tag:"Graphic Design" },
-  { title:"Bamba · Weekend",                  src:"assets/photos/p3.jpg", tag:"Graphic Design" },
+  { title:"Dinemore · Crispy Chicken Burger", src:"assets/photos/p1.jpg", tag:"Graphic Design" },
+  { title:"Blendz · This or That",            src:"assets/photos/p2.jpg", tag:"Graphic Design" },
+  { title:"Bamba · Find Us",                  src:"assets/photos/p3.jpg", tag:"Graphic Design" },
+  { title:"Bamba · Taste & Go",               src:"assets/photos/p4.jpg", tag:"Graphic Design" },
+  { title:"Bamba · Weekend",                  src:"assets/photos/p5.jpg", tag:"Graphic Design" },
 ];
 
 /* ---------- 2. ENGINE ---------- */

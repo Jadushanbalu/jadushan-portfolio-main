@@ -6,8 +6,10 @@
 /* ---------- 1. YOUR CONTENT ---------- */
 
 const APPS = [
-  // { title:"App name", overview:"What it does.", thumb:"assets/apps/app1.jpg",
-  //   stack:["Flutter","Firebase"], live:"https://…", repo:"https://github.com/…" },
+  { title:"MineO · Smart Journaling & Habit Tracker",
+    overview:"A cross-platform mobile app that helps users with personalized goal setting, habit tracking and smart reflections. Sep 2025 – Apr 2026.",
+    thumb:"assets/apps/app1.jpg",
+    stack:["React Native","Redux","Node.js","Firebase","Gemini API","ChromaDB"] },
 ];
 
 const SITES = [

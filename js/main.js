@@ -47,7 +47,8 @@ const PHOTOS = [
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = t => String(t ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const FORCE_MOTION = true; // true = always play animations, even if the phone has "reduce motion" on
+const reduce = !FORCE_MOTION && matchMedia("(prefers-reduced-motion: reduce)").matches;
 const finePointer = matchMedia("(hover:hover) and (pointer:fine)").matches;
 gsap.registerPlugin(ScrollTrigger);
 const icons = () => window.lucide && lucide.createIcons();

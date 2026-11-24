@@ -56,7 +56,7 @@ const icons = () => window.lucide && lucide.createIcons();
 const slots = (n, label, h) => Array.from({ length: n }, (_, i) => ({ empty: true, title: `${label} slot ${i + 1}`, h: h?.[i] }));
 const tags = a => a?.length ? `<div class="tags">${a.map(t => `<span>${esc(t)}</span>`).join("")}</div>` : "";
 const links = o => `<div class="links">${o.live ? `<a href="${esc(o.live)}" target="_blank" rel="noopener"><i data-lucide="external-link"></i>Live</a>` : ""}${o.repo ? `<a class="ghost" href="${esc(o.repo)}" target="_blank" rel="noopener"><i data-lucide="github"></i>Repo</a>` : ""}</div>`;
-const thumb = o => o.thumb ? `<img src="${esc(o.thumb)}" alt="${esc(o.title)}" loading="lazy">` : (o.empty ? "Add thumbnail" : "");
+const thumb = o => { const s = o.thumb || o.src; return s ? `<img src="${esc(s)}" alt="${esc(o.title)}" loading="lazy">` : (o.empty ? "Add thumbnail" : ""); };
 
 function card(o, kind) {
   const ph = o.empty ? " empty" : "";

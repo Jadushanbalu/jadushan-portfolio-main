@@ -30,8 +30,12 @@ const REELS = [
 ];
 
 // Cinematic videos (16:9)
-const FILMS = [
-  { title:"Film 1", thumb:"assets/film/1.1.png", video:"assets/film/1.1.mp4" },
+const PHOTOS = [
+  { title:"Dinemore · Crispy Chicken Burger", src:"assets/photos/p1.jpg", tag:"Graphic Design" },
+  { title:"Blendz · This or That",            src:"assets/photos/p2.jpg", tag:"Graphic Design" },
+  { title:"Bamba · Find Us",                  src:"assets/photos/p3.jpg", tag:"Graphic Design" },
+  { title:"Bamba · Taste & Go",               src:"assets/photos/p4.jpg", tag:"Graphic Design" },
+  { title:"Bamba · Weekend",                  src:"assets/photos/p5.jpg", tag:"Graphic Design" },
 ];
 
 // Photography & graphic design. tag: "Photography" or "Graphic Design" (any text works)

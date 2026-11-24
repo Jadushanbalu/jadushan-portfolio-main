@@ -118,7 +118,7 @@ let cur = "home", busy = false;
 
 function enter(v) {
   const el = $(`[data-view=${v}]`);
-  el.hidden = false; scrollTo(0, 0);
+   countUp(el);
   $$("nav button").forEach(b => b.classList.toggle("on", b.dataset.go === v));
   icons();
   if (!reduce) {
@@ -130,9 +130,12 @@ function enter(v) {
   }
   ScrollTrigger.refresh();
 }
-function swap(v) {
-  $(`[data-view=${cur}]`).hidden = true; ScrollTrigger.getAll().forEach(s => s.kill());
-  cur = v; enter(v);
+function countUp(root) {
+  $$("[data-count]", root).forEach(n => {
+    const end = +n.dataset.count, o = { v: 0 };
+    if (reduce) { n.textContent = end + "+"; return; }
+    gsap.to(o, { v: end, duration: 1.6, delay: .5, ease: "power2.out", onUpdate: () => n.textContent = Math.round(o.v) + "+" });
+  });
 }
 function go(v) {
   if (busy) return;
